@@ -1,1 +1,17 @@
-# Conteúdo de exemplo do opensearch.yml
+cluster.name: graylog
+node.name: graylog-node
+path.data: /var/lib/opensearch
+path.logs: /var/log/opensearch
+network.host: 0.0.0.0
+http.port: 9200
+
+# Define o IP de descoberta (substituir <graylog_ip>)
+discovery.seed_hosts: ["<graylog_ip>"]
+cluster.initial_master_nodes: ["graylog-node"]
+
+# Segurança desativada para integração local (não recomendado em produção)
+plugins.security.disabled: true
+
+# Evita erro de bootstrap em ambiente não produtivo
+bootstrap.memory_lock: true
+node.max_local_storage_nodes: 1
